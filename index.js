@@ -12,9 +12,6 @@
     var back = document.getElementById('back');
     back.addEventListener('touchstart', function () {
         utils.win('scrollTop', 0);
-        setTimeout(function () {
-            utils.setCss(mask, 'display', 'none');
-        }, 300);
     });
     // 回到顶部
     // var timer;
@@ -52,7 +49,7 @@
     getInitData();
     // 绑定数据
     function bindData(data) {
-        console.log(data);
+        // console.log(data);
         var str = '';
         for (var i = 0; i < 20; i++) {
             // 0-7 随机整数作为 作为索引
@@ -126,7 +123,6 @@
         // 控制回到顶部按钮 显示和隐藏
         if (sTop >= winH * 0.5) {
             utils.setCss(back, 'display', 'block');
-            utils.setCss(mask, 'display', 'block');
         } else {
             utils.setCss(back, 'display', 'none');
         }
