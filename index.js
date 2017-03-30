@@ -7,26 +7,30 @@
     // 获取浏览器窗口的高度
     var winH = utils.win('clientHeight');
 
+    var mask = document.getElementById('mask');
     // 回到顶部按钮
     var back = document.getElementById('back');
-    back.addEventListener('touchstart' , function () {
+    back.addEventListener('touchstart', function () {
         utils.win('scrollTop', 0);
+        setTimeout(function () {
+            utils.setCss(mask, 'display', 'none');
+        }, 300);
     });
     // 回到顶部
     // var timer;
     // back.onclick = function () {
     //     utils.win('scrollTop', 0);
-        // 每隔一段时间 获取到此时scrollTop 让它递减到0（到达顶部）为止
-        //  timer = setInterval (function () {
-        //      var sTop = utils.win('scrollTop');
-        //      if(sTop <= 0) {
-        //          clearInterval(timer);
-        //          utils.win('scrollTop', 0);
-        //          return;
-        //      }
-        //      sTop -= 100;
-        //      utils.win('scrollTop', sTop);
-        //  },10)
+    // 每隔一段时间 获取到此时scrollTop 让它递减到0（到达顶部）为止
+    //  timer = setInterval (function () {
+    //      var sTop = utils.win('scrollTop');
+    //      if(sTop <= 0) {
+    //          clearInterval(timer);
+    //          utils.win('scrollTop', 0);
+    //          return;
+    //      }
+    //      sTop -= 100;
+    //      utils.win('scrollTop', sTop);
+    //  },10)
     // };
     // 获取初始数据
     var data;
@@ -118,11 +122,11 @@
         var wScrollH = utils.win('scrollHeight');
         if (winH + sTop >= wScrollH - 500) {
             getInitData(); // 再次发送ajax请求
-            console.log(123);
         }
         // 控制回到顶部按钮 显示和隐藏
         if (sTop >= winH * 0.5) {
             utils.setCss(back, 'display', 'block');
+            utils.setCss(mask, 'display', 'block');
         } else {
             utils.setCss(back, 'display', 'none');
         }
