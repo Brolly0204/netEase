@@ -48,7 +48,7 @@ var utils = (function () {
         var l = ele.offsetLeft;
         var t = ele.offsetTop;
         var par = ele.offsetParent;
-        while (par && par.nodeName.toUpperCase() != 'BODY'){
+        while (par && par.nodeName.toUpperCase() != 'BODY') {
             l += par.clientLeft + par.offsetLeft;
             t += par.clientTop + par.offsetTop;
             par = par.offsetParent;
@@ -64,15 +64,15 @@ var utils = (function () {
     function getCss(ele, attr) {
 //        window.getComputedStyle
         var val;
-        if("getComputedStyle" in window){ // 如果window上有这个属性我们就用
+        if ("getComputedStyle" in window) { // 如果window上有这个属性我们就用
             val = window.getComputedStyle(ele, null)[attr];
         } else { //ie Low currentStyle
             //  oDiv.currentStyle.filter  "alpha(opacity=80)"
-            if(attr === 'opacity'){ // ie8 low
-                val =  ele.currentStyle.filter; // "alpha(opacity=80)"
+            if (attr === 'opacity') { // ie8 low
+                val = ele.currentStyle.filter; // "alpha(opacity=80)"
                 var reg = /^alpha\(opacity=(\d+(?:\.\d+)?)\)$/;
                 // 判断ie下有没有设置透明度 如果没有 默认返回1
-                val = reg.test(val)? (reg.exec(val)[1])/100 : 1; // ["alpha(opacity=80)", "80"]
+                val = reg.test(val) ? (reg.exec(val)[1]) / 100 : 1; // ["alpha(opacity=80)", "80"]
             } else {
                 val = ele.currentStyle[attr];
             }
@@ -81,7 +81,7 @@ var utils = (function () {
 //           100px -100px -1.23px   12rem  1em  block
         // 把带单位的去掉 把数字提取出来 即使是字符串数字 我也要提取成数字在返回 预防后期累加使用
         var regs = /^-?\d+(\.\d+)?(px|pt|rem|em)?$/;
-        return regs.test(val)? parseFloat(val) : val;
+        return regs.test(val) ? parseFloat(val) : val;
     }
 
     /**
@@ -97,15 +97,15 @@ var utils = (function () {
             ele.style['filter'] = 'alpha(opacity=' + val * 100 + ')'; // ie 低版本
             return;
         }
-        if(attr === 'float'){
+        if (attr === 'float') {
             ele.style.cssFloat = val; // 老版本 ff
             ele.style.styleFloat = val; // ie 低版本
             return;
         }
         // 如果是这些属性 为确保 传递进来的值 有单位
         var reg = /^width|height|top|bottom|left|right|((margin|pading)(Top|Left|Bottom|Right)?)$/;
-        if(reg.test(attr)){
-            if(!isNaN(val)){
+        if (reg.test(attr)) {
+            if (!isNaN(val)) {
                 val += 'px';
             }
         }

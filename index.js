@@ -51,7 +51,7 @@
         for (var i = 0; i < 20; i++) {
             // 0-7 随机整数作为 作为索引
             // Math.round(Math.random()*(7-0)+0);
-            var ind = Math.round(Math.random()*7);
+            var ind = Math.round(Math.random() * 7);
             var cur = data[ind];
 
             str += '<li><a href=' + cur.link + '>';
@@ -75,7 +75,7 @@
         for (var i = 0; i < oImgs.length; i++) {
             // 如果当前img flag为true 说明已经加载过了 就不再执行checkImg
             // 防止重复加载
-            if(!oImgs[i].flag){
+            if (!oImgs[i].flag) {
                 checkImg(oImgs[i]);
             }
             // if(!oImgs[i].flag) checkImg(oImgs[i]);
@@ -107,21 +107,22 @@
             }
         }
     }
+
     window.onscroll = function () {
         delayImgs();
         // 当滚动条 快要滚动到页面底部时 继续发送数据请求 进行加载
         var sTop = utils.win('scrollTop');
         // clientHeight(窗口高度) + scrollTop（滚动条最大值） == scrollHeight
         var wScrollH = utils.win('scrollHeight');
-       if(winH + sTop >= wScrollH - 500) {
-           getInitData(); // 再次发送ajax请求
-           console.log(123);
-       }
-       // 控制回到顶部按钮 显示和隐藏
-       if(sTop >= winH*0.5) {
-           utils.setCss(back, 'display', 'block');
-       } else {
-           utils.setCss(back, 'display', 'none');
-       }
+        if (winH + sTop >= wScrollH - 500) {
+            getInitData(); // 再次发送ajax请求
+            console.log(123);
+        }
+        // 控制回到顶部按钮 显示和隐藏
+        if (sTop >= winH * 0.5) {
+            utils.setCss(back, 'display', 'block');
+        } else {
+            utils.setCss(back, 'display', 'none');
+        }
     }
 })();
