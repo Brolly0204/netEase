@@ -83,7 +83,7 @@
         }
         #mask {
             position: fixed;
-            right: 15px;
+            right: 10px;
             bottom: 50px;
             width: 60px;
             height: 60px;
@@ -99,14 +99,15 @@
 <div id="mask"><div id="back"></div></div>
 
 <script type="text/javascript" src="fastclick.js"></script>
+<script type="text/javascript">
+//    if('addEventListener' in window) {
+//        document.addEventListener('DOMContentLoaded', function () {
+//            FastClick.attach(document.body);
+//        },false);
+//    }
+</script>
 <script type="text/javascript" src="./utils.js"></script>
 <script type="text/javascript" src="index.js"></script>
-<script type="text/javascript">
-    if('addEventListener' in window) {
-        document.addEventListener('DOMContentLoaded', function () {
-            FastClick.attach(document.body);
-        },false);
-    }
-</script>
+
 </body>
 </html>
