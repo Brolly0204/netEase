@@ -9,11 +9,13 @@
 
     // 回到顶部按钮
     var back = document.getElementById('back');
-
-    // 回到顶部
-    var timer;
-    back.onclick = function () {
+    back.addEventListener('touchstart' , function () {
         utils.win('scrollTop', 0);
+    });
+    // 回到顶部
+    // var timer;
+    // back.onclick = function () {
+    //     utils.win('scrollTop', 0);
         // 每隔一段时间 获取到此时scrollTop 让它递减到0（到达顶部）为止
         //  timer = setInterval (function () {
         //      var sTop = utils.win('scrollTop');
@@ -25,7 +27,7 @@
         //      sTop -= 100;
         //      utils.win('scrollTop', sTop);
         //  },10)
-    };
+    // };
     // 获取初始数据
     var data;
 
