@@ -10,9 +10,12 @@
     var mask = document.getElementById('mask');
     // 回到顶部按钮
     var back = document.getElementById('back');
-    back.addEventListener('touchstart', function () {
+    // back.addEventListener('touchstart', function () {
+    //     utils.win('scrollTop', 0);
+    // });
+    back.onclick = function () {
         utils.win('scrollTop', 0);
-    });
+    };
     // 回到顶部
     // var timer;
     // back.onclick = function () {
